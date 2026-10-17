@@ -30,4 +30,12 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 * `name` is translatable and falls back to `slug`. `locations()` lists the locations of the district.
 * `art.php` now publishes the `districts` capability and describes the artifact as countries, governorates, cities, districts, and addresses.
 
+## [1.05.00] - 2026-10-17
+
+* feat(locations): add the translatable `locations` table and align `Location`.
+* `city_id` and `district_id` are nullable and use `ON DELETE SET NULL`.
+* `latitude` is `decimal(10, 8)` and `longitude` is `decimal(11, 8)`, both nullable. `postal_code` is optional.
+* `name` and `address_line` live on `location_translations` and fall back to `slug`.
+* The model casts coordinates as `decimal:8` and exposes `city()` and `district()`.
+
 <!-- releases -->
