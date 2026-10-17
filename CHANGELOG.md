@@ -38,4 +38,9 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 * `name` and `address_line` live on `location_translations` and fall back to `slug`.
 * The model casts coordinates as `decimal:8` and exposes `city()` and `district()`.
 
+## [1.06.00] - 2026-10-17
+
+* refactor(database)!: delete `2026_01_01_000010_create_geography_countries_table`, `..._000011_create_geography_governorates_table`, `..._000012_create_geography_cities_table`, and `..._000013_create_geography_locations_table`.
+* Databases that already applied those migrations are not rewritten by this commit. New installs use the translatable tables added in 1.01.00â€“1.05.00.
+
 <!-- releases -->
