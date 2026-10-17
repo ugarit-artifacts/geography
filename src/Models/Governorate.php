@@ -4,33 +4,77 @@ declare(strict_types=1);
 
 namespace Ugarit\Artifacts\Geography\Models;
 
+use Heritage\Database\Eloquent\Factories\HasFactory;
 use Heritage\Database\Eloquent\Model;
-use Ugarit\Artifacts\I18n\Traits\HasTranslatableAttributes;
+use Heritage\Database\Eloquent\Relations\BelongsTo;
+use Heritage\Database\Eloquent\Relations\HasMany;
+use Heritage\Database\Eloquent\SoftDeletes;
 
+/**
+ * Eloquent model representing a Governorate entity, with translatable attributes (stored in its
+ * translation table) and soft deletion.
+ */
 class Governorate extends Model
 {
-    use HasTranslatableAttributes;
+    use HasFactory, SoftDeletes;
 
-    protected $table = 'geography_governorates';
-
+    /**
+     * Mass-assignable attributes.
+     *
+     * @var list<string>
+     */
     protected $fillable = [
         'country_id',
-        'name',
+        'slug',
         'code',
-        'is_active',
+        'active',
     ];
 
+    /**
+     * Translatable attribute keys handled by the translation layer.
+     *
+     * @var list<string>
+     */
+    protected array $translatable = [
+        'name',
+    ];
+
+    /**
+     * Attribute casting definitions.
+     *
+     * @var array<string, string>
+     */
     protected $casts = [
-        'is_active' => 'boolean',
+        'country_id' => 'integer',
+        'active' => 'boolean',
     ];
 
-    public function country()
+    /**
+     * Fallback mapping for translatable fields.
+     *
+     * @var array<string, string>
+     */
+    protected array $translatableFallback = [
+        'name' => 'slug',
+    ];
+
+    /**
+     * The country the governorate belongs to.
+     *
+     * @return BelongsTo<Country, $this>
+     */
+    public function country(): BelongsTo
     {
-        return $this->belongsTo(Country::class, 'country_id');
+        return $this->belongsTo(Country::class);
     }
 
-    public function cities()
+    /**
+     * The cities of the governorate.
+     *
+     * @return HasMany<City, $this>
+     */
+    public function cities(): HasMany
     {
-        return $this->hasMany(City::class, 'governorate_id');
+        return $this->hasMany(City::class);
     }
 }
