@@ -23,4 +23,11 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 * `name` lives on `city_translations` and falls back to `slug`.
 * Relations: `governorate()`, `districts()`, and `locations()`.
 
+## [1.04.00] - 2026-10-17
+
+* feat(districts): add `districts` and `district_translations`, and the `District` model.
+* Columns: `city_id` (restrict on delete), `slug`, optional `code`, optional `postal_code`, `active`, soft deletes, and timestamps.
+* `name` is translatable and falls back to `slug`. `locations()` lists the locations of the district.
+* `art.php` now publishes the `districts` capability and describes the artifact as countries, governorates, cities, districts, and addresses.
+
 <!-- releases -->
