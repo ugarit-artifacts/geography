@@ -50,4 +50,9 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 * `LocationFactory` creates the district first and sets `city_id` from that district, so the two foreign keys agree.
 * Coordinates come from Faker latitude and longitude, inside the decimal ranges.
 
+## [1.08.00] - 2026-10-17
+
+* feat(seeders): add `CountrySeeder`, `GovernorateSeeder`, `CitySeeder`, `DistrictSeeder`, and `LocationSeeder`.
+* Each seeder inserts the fixed `records()` list (still empty) and then ten factory rows, localized when the model is translatable.
+
 <!-- releases -->
