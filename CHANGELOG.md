@@ -43,4 +43,11 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 * refactor(database)!: delete `2026_01_01_000010_create_geography_countries_table`, `..._000011_create_geography_governorates_table`, `..._000012_create_geography_cities_table`, and `..._000013_create_geography_locations_table`.
 * Databases that already applied those migrations are not rewritten by this commit. New installs use the translatable tables added in 1.01.00â€“1.05.00.
 
+## [1.07.00] - 2026-10-17
+
+* feat(factories): add `CountryFactory`, `GovernorateFactory`, `CityFactory`, `DistrictFactory`, and `LocationFactory`.
+* `CountryFactory` builds an ISO-sized code with `lexify` and uppercases it.
+* `LocationFactory` creates the district first and sets `city_id` from that district, so the two foreign keys agree.
+* Coordinates come from Faker latitude and longitude, inside the decimal ranges.
+
 <!-- releases -->
