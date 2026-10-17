@@ -16,4 +16,11 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 * `name` lives on `governorate_translations` and falls back to `slug`.
 * Relations: `country()` and `cities()`.
 
+## [1.03.00] - 2026-10-17
+
+* feat(cities): add the translatable `cities` table and align `City`.
+* Columns: `governorate_id` (restrict on delete), `slug`, optional `postal_code`, `active`, soft deletes, and timestamps.
+* `name` lives on `city_translations` and falls back to `slug`.
+* Relations: `governorate()`, `districts()`, and `locations()`.
+
 <!-- releases -->

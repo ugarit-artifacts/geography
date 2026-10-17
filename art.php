@@ -21,7 +21,7 @@ return new class extends Artifact
     /**
      * The semantic version of the artifact.
      */
-    public string $version = '1.02.00';
+    public string $version = '1.03.00';
 
     /**
      * Technical capabilities provided by this artifact.

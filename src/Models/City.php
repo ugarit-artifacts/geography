@@ -4,28 +4,87 @@ declare(strict_types=1);
 
 namespace Ugarit\Artifacts\Geography\Models;
 
+use Heritage\Database\Eloquent\Factories\HasFactory;
 use Heritage\Database\Eloquent\Model;
-use Ugarit\Artifacts\I18n\Traits\HasTranslatableAttributes;
+use Heritage\Database\Eloquent\Relations\BelongsTo;
+use Heritage\Database\Eloquent\Relations\HasMany;
+use Heritage\Database\Eloquent\SoftDeletes;
 
+/**
+ * Eloquent model representing a City entity, with translatable attributes (stored in its
+ * translation table) and soft deletion.
+ */
 class City extends Model
 {
-    use HasTranslatableAttributes;
+    use HasFactory, SoftDeletes;
 
-    protected $table = 'geography_cities';
-
+    /**
+     * Mass-assignable attributes.
+     *
+     * @var list<string>
+     */
     protected $fillable = [
         'governorate_id',
-        'name',
+        'slug',
         'postal_code',
-        'is_active',
+        'active',
     ];
 
+    /**
+     * Translatable attribute keys handled by the translation layer.
+     *
+     * @var list<string>
+     */
+    protected array $translatable = [
+        'name',
+    ];
+
+    /**
+     * Attribute casting definitions.
+     *
+     * @var array<string, string>
+     */
     protected $casts = [
-        'is_active' => 'boolean',
+        'governorate_id' => 'integer',
+        'active' => 'boolean',
     ];
 
-    public function governorate()
+    /**
+     * Fallback mapping for translatable fields.
+     *
+     * @var array<string, string>
+     */
+    protected array $translatableFallback = [
+        'name' => 'slug',
+    ];
+
+    /**
+     * The governorate the city belongs to.
+     *
+     * @return BelongsTo<Governorate, $this>
+     */
+    public function governorate(): BelongsTo
     {
-        return $this->belongsTo(Governorate::class, 'governorate_id');
+        return $this->belongsTo(Governorate::class);
+    }
+
+    /**
+     * The districts of the city.
+     *
+     * @return HasMany<District, $this>
+     */
+    public function districts(): HasMany
+    {
+        return $this->hasMany(District::class);
+    }
+
+    /**
+     * The locations of the city.
+     *
+     * @return HasMany<Location, $this>
+     */
+    public function locations(): HasMany
+    {
+        return $this->hasMany(Location::class);
     }
 }
