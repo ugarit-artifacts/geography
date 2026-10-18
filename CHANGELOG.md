@@ -95,4 +95,8 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 * feat(cities): add `CityRepository`, `CityTranslationRepository`, their contracts, the city parcels, and `CityOutcome`.
 * Remove `src/Repositories/CityRepository.php`.
 
+## [1.16.00] - 2026-10-18
+
+* feat(cities): add the city capabilities, result enums, and `CityPolicy`.
+
 <!-- releases -->
