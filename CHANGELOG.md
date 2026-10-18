@@ -55,4 +55,10 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 * feat(seeders): add `CountrySeeder`, `GovernorateSeeder`, `CitySeeder`, `DistrictSeeder`, and `LocationSeeder`.
 * Each seeder inserts the fixed `records()` list (still empty) and then ten factory rows, localized when the model is translatable.
 
+## [1.09.00] - 2026-10-18
+
+* feat(countries): add `CountryRepositoryInterface`, `CountryTranslationRepositoryInterface`, `CountryRepository`, and `CountryTranslationRepository`.
+* The repository persists a parcel through `ModelRepository::save()` and returns the model.
+* Remove `src/Repositories/CountryRepository.php`, which mapped rows to `CountryDTO`.
+
 <!-- releases -->
