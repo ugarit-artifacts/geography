@@ -85,4 +85,9 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 * Add `GovernorateOutcome`.
 * Remove `src/Repositories/GovernorateRepository.php`.
 
+## [1.14.00] - 2026-10-18
+
+* feat(governorates): add the governorate capabilities, their result enums, and `GovernoratePolicy`.
+* Translation capabilities save or destroy a single locale. The save feature parcel is accepted later by `SaveGovernorateFeature`.
+
 <!-- releases -->
