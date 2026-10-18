@@ -108,4 +108,10 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 
 * feat(districts): add the district capabilities, result enums, and `DistrictPolicy`.
 
+## [1.19.00] - 2026-10-18
+
+* feat(locations): add `LocationRepository`, `LocationTranslationRepository`, their contracts, the location parcels, and `LocationOutcome`.
+* `SaveLocationParcel` carries `city_id`, `district_id`, `slug`, `latitude`, `longitude`, `postal_code`, and `active`. The feature parcel also carries `translations`.
+* Remove `src/Repositories/LocationRepository.php`.
+
 <!-- releases -->
