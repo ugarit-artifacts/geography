@@ -90,4 +90,9 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 * feat(governorates): add the governorate capabilities, their result enums, and `GovernoratePolicy`.
 * Translation capabilities save or destroy a single locale. The save feature parcel is accepted later by `SaveGovernorateFeature`.
 
+## [1.15.00] - 2026-10-18
+
+* feat(cities): add `CityRepository`, `CityTranslationRepository`, their contracts, the city parcels, and `CityOutcome`.
+* Remove `src/Repositories/CityRepository.php`.
+
 <!-- releases -->
