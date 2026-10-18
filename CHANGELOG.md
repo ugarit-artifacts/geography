@@ -67,4 +67,11 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 * Add `SaveCountryParcel` for the feature, including the `translations` payload keyed by locale code.
 * Add `CountryOutcome` as the result envelope for country operations.
 
+## [1.11.00] - 2026-10-18
+
+* feat(countries): add `IndexCountriesCapability`, `CreateCountryCapability`, `ShowCountryCapability`, `EditCountryCapability`, `SaveCountryCapability`, and `DestroyCountryCapability`.
+* Add `SaveCountryTranslationCapability` and `DestroyCountryTranslationCapability`.
+* Each capability returns `CountryOutcome` from its result enum. `failed()` returns the failed result when `perform()` throws.
+* `SaveCountryCapability` uppercases `code` before the repository writes it, so `ps` and `PS` are one value.
+
 <!-- releases -->
