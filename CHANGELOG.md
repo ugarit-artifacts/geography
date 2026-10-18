@@ -99,4 +99,9 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 
 * feat(cities): add the city capabilities, result enums, and `CityPolicy`.
 
+## [1.17.00] - 2026-10-18
+
+* feat(districts): add `DistrictRepository`, `DistrictTranslationRepository`, their contracts, the district parcels, and `DistrictOutcome`.
+* There was no district repository in 1.00.00. This is the first persistence API for the entity.
+
 <!-- releases -->
