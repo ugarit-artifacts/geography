@@ -61,4 +61,10 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 * The repository persists a parcel through `ModelRepository::save()` and returns the model.
 * Remove `src/Repositories/CountryRepository.php`, which mapped rows to `CountryDTO`.
 
+## [1.10.00] - 2026-10-18
+
+* feat(countries): add the country capability parcels (index, create, show, edit, save, destroy) and the translation save and destroy parcels.
+* Add `SaveCountryParcel` for the feature, including the `translations` payload keyed by locale code.
+* Add `CountryOutcome` as the result envelope for country operations.
+
 <!-- releases -->
