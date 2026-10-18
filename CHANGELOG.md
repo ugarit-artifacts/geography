@@ -104,4 +104,8 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 * feat(districts): add `DistrictRepository`, `DistrictTranslationRepository`, their contracts, the district parcels, and `DistrictOutcome`.
 * There was no district repository in 1.00.00. This is the first persistence API for the entity.
 
+## [1.18.00] - 2026-10-18
+
+* feat(districts): add the district capabilities, result enums, and `DistrictPolicy`.
+
 <!-- releases -->
