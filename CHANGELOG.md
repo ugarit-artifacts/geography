@@ -114,4 +114,13 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 * `SaveLocationParcel` carries `city_id`, `district_id`, `slug`, `latitude`, `longitude`, `postal_code`, and `active`. The feature parcel also carries `translations`.
 * Remove `src/Repositories/LocationRepository.php`.
 
+## [1.20.00] - 2026-10-18
+
+* feat(locations): add the location capabilities, result enums, and `LocationPolicy`.
+* `SaveLocationCapability::alignCity()` loads the district and compares `districts.city_id` with the city being saved.
+* A missing district id fails with `district_id: The selected district is invalid.`
+* A district from another city fails with `district_id: The district does not belong to this city.`
+* When the district is set and the city is omitted, the capability writes the district's `city_id` onto the parcel before `save()`.
+* On update, an omitted city keeps the current city. Changing only the district to another city therefore fails until the matching city is sent.
+
 <!-- releases -->
