@@ -33,7 +33,7 @@ return new class extends Artifact
      *
      * @var string
      */
-    public string $version = '1.11.00';
+    public string $version = '1.12.00';
 
     /**
      * Human-readable description of what this artifact provides.

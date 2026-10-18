@@ -74,4 +74,8 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 * Each capability returns `CountryOutcome` from its result enum. `failed()` returns the failed result when `perform()` throws.
 * `SaveCountryCapability` uppercases `code` before the repository writes it, so `ps` and `PS` are one value.
 
+## [1.12.00] - 2026-10-18
+
+* feat(countries): add `CountryPolicy` for the country authorization abilities used by `#[Authorize]` on the country capabilities.
+
 <!-- releases -->
