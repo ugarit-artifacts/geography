@@ -78,4 +78,11 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 
 * feat(countries): add `CountryPolicy` for the country authorization abilities used by `#[Authorize]` on the country capabilities.
 
+## [1.13.00] - 2026-10-18
+
+* feat(governorates): add `GovernorateRepository`, `GovernorateTranslationRepository`, and their contracts.
+* Add governorate parcels for index, create, show, edit, save, destroy, translation save, translation destroy, and the save feature.
+* Add `GovernorateOutcome`.
+* Remove `src/Repositories/GovernorateRepository.php`.
+
 <!-- releases -->
