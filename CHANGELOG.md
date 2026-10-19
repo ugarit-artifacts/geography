@@ -131,4 +131,11 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 * Add `CountryResource` and `CountryTranslationResource`.
 * Remove the 1.00.00 `CountryController`.
 
+## [1.22.00] - 2026-10-19
+
+* feat(governorates): add the governorate capability controller, feature controller, and translation controller.
+* Store and update requests require `country_id` and a slug. `UniqueSlug::within('governorates', 'country_id', ...)` ignores soft-deleted rows and, on update, the current governorate.
+* Add `UniqueSlug`, the governorate form requests, and the governorate resources.
+* Remove the 1.00.00 `GovernorateController`.
+
 <!-- releases -->
