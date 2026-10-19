@@ -144,4 +144,9 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 * `slug` is unique per `governorate_id` among rows with `deleted_at` null.
 * Remove the 1.00.00 `CityController`.
 
+## [1.24.00] - 2026-10-19
+
+* feat(districts): add the district capability, feature, and translation controllers, the district form requests, and the district resources.
+* `city_id` is required. `slug` is unique per `city_id` among live rows.
+
 <!-- releases -->
