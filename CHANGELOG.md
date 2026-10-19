@@ -174,4 +174,8 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 
 * feat(cities): add `SaveCityFeature`, the transactional save of a city and the locales in its `translations` payload.
 
+## [1.29.00] - 2026-10-19
+
+* feat(districts): add `SaveDistrictFeature`, the transactional save of a district and the locales in its `translations` payload.
+
 <!-- releases -->
