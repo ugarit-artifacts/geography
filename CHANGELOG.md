@@ -165,4 +165,9 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 * A failed step rolls the transaction back and returns that step's result. The feature then reloads the country with its translations.
 * An empty translation payload returns the success result that records that no translation was written.
 
+## [1.27.00] - 2026-10-19
+
+* feat(governorates): add `SaveGovernorateFeature`.
+* One transaction saves the governorate row, upserts or deletes each locale in the payload, and reloads the governorate with its translations.
+
 <!-- releases -->
