@@ -188,4 +188,11 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 * feat(i18n): add `lang/en/country.php`, `governorate.php`, `city.php`, `district.php`, and `location.php`.
 * The lines name each entity, its plural, and its attributes for the panel and for validation labels (`geography::{entity}.attributes.{field}.label`).
 
+## [1.32.00] - 2026-10-19
+
+* feat(panel): add `routes/web.php`. Middleware is `web` and `auth`. Prefix is `panel/artifact/geography`.
+* Each entity has a capability resource, a feature resource limited to store and update, and a nested translation resource limited to store, update, and destroy.
+* GET `/` is `geography.artifact.show`.
+* Add `ShowArtifactCapability`, `ShowArtifactResult`, `ArtifactController`, and `lang/en/artifact.php` for the summary page.
+
 <!-- releases -->
