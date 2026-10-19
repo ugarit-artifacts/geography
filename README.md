@@ -2,60 +2,68 @@
 
 > **"Artifacts provide capabilities. Features define behavior."**
 
-The **Geography Artifact** is the official geographical data and territorial hierarchy capability engine for the Ugarit Ecosystem. Built upon the **Artifact-Driven Architecture (ADA)**, it operates as a completely decoupled backend capability providing structured country, governorate, city, and location datasets with zero frontend coupling.
+The **Geography Artifact** is the territorial registry of the Ugarit ecosystem. It stores countries, governorates, cities, districts, and locations, with translated names, and exposes them as capabilities other artifacts can require.
 
----
+It runs inside a host Ugarit application. It is not a standalone framework.
 
-## Role in the Ecosystem
+## Documentation
+
+- [Overview](OVERVIEW.md)
+- [Architecture](ARCHITECTURE.md)
+- [Database schema](SCHEMA.md)
+- [Installation](INSTALLATION.md)
+- [Roadmap](ROADMAP.md)
+- [Changelog](CHANGELOG.md)
+- [Contributing](CONTRIBUTING.md)
+- [Security](SECURITY.md)
+- [Code of Conduct](CODE_OF_CONDUCT.md)
+- [Contact](CONTACT.md)
+- [License](LICENSE.md)
+
+## Role in the ecosystem
 
 | Layer | Package | Responsibility |
 | :--- | :--- | :--- |
-| **Kernel** | `ugarit/framework` | Core service container and database lifecycle |
-| **Artifact** | `ugarit-artifacts/i18n` | Provides translatable multilingual attributes |
-| **Artifact** | `ugarit-artifacts/geography` | Autonomous territorial hierarchy and geospatial registry |
+| **Kernel** | `ugarit/framework` | Container, schema builder, capability and feature pipeline |
+| **Artifact** | `ugarit-artifacts/i18n` | Locales. Translation rows store `locale_id` |
+| **Artifact** | `ugarit-artifacts/geography` | Territorial hierarchy and geospatial points |
 
----
+`art.php` requires the capability `i18n.translations` before this artifact boots.
 
-## Core Capabilities
+## Capabilities
 
-* **`countries`**: ISO-3166-1 alpha-2, alpha-3, numeric codes, capitals, currencies, dialing codes, and flags.
-* **`governorates`**: First-level territorial divisions, governorates, provinces, and states linked to countries.
-* **`cities`**: Municipalities and local districts hierarchically bound to governorates and countries.
-* **`locations`**: Geospatial coordinates (latitude/longitude), localized street addresses, and postal codes.
+Declared in `art.php`:
 
----
+| Slug | What the tables store today |
+| :--- | :--- |
+| `countries` | Unique country code, native name, translated name, active flag |
+| `governorates` | First-level division of a country: slug, optional code, translated name |
+| `cities` | Municipality under a governorate: slug, optional postal code, translated name |
+| `districts` | Subdivision of a city: slug, optional code and postal code, translated name |
+| `locations` | Point and address, optionally under a city and a district |
 
-## Architecture Mapping
+The structural diagram, columns, keys, and delete rules are in [SCHEMA.md](SCHEMA.md).
 
-| Layer | Namespace / Directory | Responsibility |
+## Routes
+
+Registered from `routes/web.php` under `panel/artifact/geography`, with `web` and `auth` middleware.
+
+| Kind | Path | Purpose |
 | :--- | :--- | :--- |
-| **Contracts** | `src/Contracts/` | Interface boundaries for data access |
-| **DTOs** | `src/DTOs/` | Immutable typed input and output data shapes |
-| **UseCases (Operations)** | `src/Services/UseCases/` | Single-purpose domain operations |
-| **Outcomes** | `src/Outcomes/` | Standardized result envelopes (replaces Response) |
-| **Signals** | `src/Signals/` | Domain occurrence notifications (replaces Event) |
-| **Repositories** | `src/Repositories/` | Data source boundaries mapping Models to DTOs |
-| **Responders** | `src/Http/Responders/` | Transport adapters (JSON, Inertia, CLI) |
-| **Controllers** | `src/Http/Controllers/` | Input dispatchers; zero business rules |
+| **GET** | `/panel/artifact/geography` | Artifact summary |
+| **RESOURCE** | `…/country`, `governorate`, `city`, `district`, `location` | Capability CRUD |
+| **RESOURCE** | `…/{entity}-feature` (`store`, `update`) | Save the record and its translations in one transaction |
+| **RESOURCE** | `…/{record}/{entity}-translation` (`store`, `update`, `destroy`) | One locale at a time |
 
----
-
-## Quick Start
-
-Require the artifact within your Ugarit application:
+## Quick start
 
 ```bash
-composer require "ugarit-artifacts/geography:^1.00.00"
-```
-
-Execute migrations:
-
-```bash
+composer require "ugarit-artifacts/geography:^2.00.00"
 php scribe migrate
 ```
 
----
+See [Installation](INSTALLATION.md).
 
-## License & Authorship
+## License
 
-Developed under the leadership of **Muath R Abu Ouda** (Vision Leader of Ugarit). Licensed under the [MIT License](LICENSE.md).
+MIT. See [LICENSE.md](LICENSE.md). Maintained by **Muath R Abu Ouda**.

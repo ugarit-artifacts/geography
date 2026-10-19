@@ -235,4 +235,10 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 * Partial unique indexes are listed, including the three location predicates. The page states that MySQL and MariaDB have no partial indexes.
 * The page records what the schema does not store: capitals, currencies, dialing codes, flags, and boundary polygons. It also records that district/city agreement is enforced by `SaveLocationCapability`, not by a foreign key.
 
-<!-- releases -->
+## [2.00.04] - 2026-10-19
+
+* docs(geography): rewrite `README.md` with the capability table, the `panel/artifact/geography` routes, and links to the schema and this changelog. The install constraint is `^2.00.00`.
+* docs(geography): rewrite `INSTALLATION.md` for PHP 8.3, `ugarit/framework` `^1.00.00`, and the requirement that the i18n locale resolver is bound before migrating so translation tables receive `locale_id`.
+* docs(geography): rewrite `CONTRIBUTING.md`. A per-locale column uses `translatable()`. A parent link uses `foreignId()->constrained()`, and `nullOnDelete()` only when the child may outlive the parent.
+* docs(geography): rewrite `ROADMAP.md`. Phase 1 is the 2.00.00 registry. Phase 2 is a MENA seed and GeoJSON boundaries. Capitals, currencies, dialing codes, and flags stay out of the schema until they become real columns.
+* The manifest version is 2.00.04.
