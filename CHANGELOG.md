@@ -138,4 +138,10 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 * Add `UniqueSlug`, the governorate form requests, and the governorate resources.
 * Remove the 1.00.00 `GovernorateController`.
 
+## [1.23.00] - 2026-10-19
+
+* feat(cities): add the city capability, feature, and translation controllers, the city form requests, and the city resources.
+* `slug` is unique per `governorate_id` among rows with `deleted_at` null.
+* Remove the 1.00.00 `CityController`.
+
 <!-- releases -->
