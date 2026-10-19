@@ -183,4 +183,9 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 * feat(locations): add `SaveLocationFeature`.
 * The transaction saves the location (including the city/district alignment from `SaveLocationCapability`), then saves or destroys each locale, then reloads the location with `name` and `address_line`.
 
+## [1.31.00] - 2026-10-19
+
+* feat(i18n): add `lang/en/country.php`, `governorate.php`, `city.php`, `district.php`, and `location.php`.
+* The lines name each entity, its plural, and its attributes for the panel and for validation labels (`geography::{entity}.attributes.{field}.label`).
+
 <!-- releases -->
