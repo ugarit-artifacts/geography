@@ -149,4 +149,13 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 * feat(districts): add the district capability, feature, and translation controllers, the district form requests, and the district resources.
 * `city_id` is required. `slug` is unique per `city_id` among live rows.
 
+## [1.25.00] - 2026-10-19
+
+* feat(locations): add the location capability, feature, and translation controllers, the location form requests, and the location resources.
+* `LocationRules` requires `slug`, optional `postal_code`, and `active`.
+* `latitude` is numeric between -90 and 90. `longitude` is numeric between -180 and 180.
+* `city_id` must exist on a live city. `district_id` must exist on a live district and, when a city is known, on a district of that city. On update, an omitted city falls back to the location already stored.
+* `slug` is unique among live locations that share the district, or the city when no district is set, or among locations with neither parent.
+* Remove the 1.00.00 `LocationController`.
+
 <!-- releases -->
