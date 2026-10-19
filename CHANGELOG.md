@@ -158,4 +158,11 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 * `slug` is unique among live locations that share the district, or the city when no district is set, or among locations with neither parent.
 * Remove the 1.00.00 `LocationController`.
 
+## [1.26.00] - 2026-10-19
+
+* feat(countries): add `SaveCountryFeature`.
+* The flow saves the country, then for each locale in `translations` calls save or, when the locale is null, destroy. Omitted locales stay as they are.
+* A failed step rolls the transaction back and returns that step's result. The feature then reloads the country with its translations.
+* An empty translation payload returns the success result that records that no translation was written.
+
 <!-- releases -->
