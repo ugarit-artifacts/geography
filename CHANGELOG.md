@@ -170,4 +170,8 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 * feat(governorates): add `SaveGovernorateFeature`.
 * One transaction saves the governorate row, upserts or deletes each locale in the payload, and reloads the governorate with its translations.
 
+## [1.28.00] - 2026-10-19
+
+* feat(cities): add `SaveCityFeature`, the transactional save of a city and the locales in its `translations` payload.
+
 <!-- releases -->
