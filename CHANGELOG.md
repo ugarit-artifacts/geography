@@ -220,4 +220,10 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 * The migration is a no-op when the create migrations already built the partial indexes. PostgreSQL, SQLite, and SQL Server store the predicate. MySQL and MariaDB cannot.
 * `down()` does not restore a global unique index, because duplicate slugs across parents cannot be folded back into one.
 
+## [2.00.02] - 2026-10-19
+
+* docs(geography): rewrite `OVERVIEW.md`. Geography is the shared address book: country, governorate, city, district, location.
+* docs(geography): rewrite `ARCHITECTURE.md`. Controllers build a parcel and return an outcome. A save feature calls save, then per-locale translation save or destroy, then show, inside one transaction.
+* The architecture page lists the directories for capabilities, features, parcels, outcomes, enums, repositories, policies, HTTP, models, migrations, routes, and language.
+
 <!-- releases -->
