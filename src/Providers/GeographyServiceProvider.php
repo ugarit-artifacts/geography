@@ -5,35 +5,37 @@ declare(strict_types=1);
 namespace Ugarit\Artifacts\Geography\Providers;
 
 use Heritage\Support\ServiceProvider;
-use Ugarit\Artifacts\Geography\Contracts\CityRepositoryContract;
-use Ugarit\Artifacts\Geography\Contracts\CountryRepositoryContract;
-use Ugarit\Artifacts\Geography\Contracts\GovernorateRepositoryContract;
-use Ugarit\Artifacts\Geography\Contracts\LocationRepositoryContract;
-use Ugarit\Artifacts\Geography\Repositories\CityRepository;
-use Ugarit\Artifacts\Geography\Repositories\CountryRepository;
-use Ugarit\Artifacts\Geography\Repositories\GovernorateRepository;
-use Ugarit\Artifacts\Geography\Repositories\LocationRepository;
 
+/**
+ * Class GeographyServiceProvider
+ *
+ * Service provider of the Geography artifact domain. The kernel loads the artifact's
+ * resources by convention: its config files, migrations, translations (geography::file.key),
+ * views (geography::view) and routes/web.php and routes/api.php.
+ */
 class GeographyServiceProvider extends ServiceProvider
 {
+    /**
+     * Register geography domain services into the IoC container.
+     *
+     * Bind interfaces, singletons, or any service-level dependencies here.
+     *
+     * @return void
+     */
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../../config/geography.php', 'geography');
-
-        $this->app->singleton(CountryRepositoryContract::class, CountryRepository::class);
-        $this->app->singleton(GovernorateRepositoryContract::class, GovernorateRepository::class);
-        $this->app->singleton(CityRepositoryContract::class, CityRepository::class);
-        $this->app->singleton(LocationRepositoryContract::class, LocationRepository::class);
+        // Geography service bindings
     }
 
+    /**
+     * Bootstrap geography domain services.
+     *
+     * This method is called after all providers have been registered.
+     *
+     * @return void
+     */
     public function boot(): void
     {
-        if ($this->app->runningInConsole()) {
-            $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
-
-            $this->publishes([
-                __DIR__ . '/../../config/geography.php' => config_path('geography.php'),
-            ], 'geography-config');
-        }
+        // Geography bootstrapping beyond the resources the kernel loads
     }
 }

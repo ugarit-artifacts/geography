@@ -195,4 +195,14 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 * GET `/` is `geography.artifact.show`.
 * Add `ShowArtifactCapability`, `ShowArtifactResult`, `ArtifactController`, and `lang/en/artifact.php` for the summary page.
 
+## [2.00.00] - 2026-10-19
+
+* refactor(geography)!: remove the 1.00.00 application layer now that capabilities and features cover it.
+* Delete every file under `src/DTOs`, `src/Services/UseCases`, and `src/Signals`.
+* Delete `GeographyOutcome`, `GeographyResponder`, `config/geography.php`, and `tests/Unit/CountryDTOTest.php`.
+* Delete the old repository contracts `CityRepositoryContract`, `CountryRepositoryContract`, `GovernorateRepositoryContract`, and `LocationRepositoryContract`.
+* `composer.json` requires PHP `^8.3` and `ugarit/framework` `^1.00.00`. The direct requirement on `ugarit-artifacts/i18n` is removed. The manifest still requires the `i18n.translations` capability, which is what selects `locale_id` on translation tables.
+* Drop `minimum-stability`, `prefer-stable`, and the keyword list. Autoload the factories and seeders. The description lists districts and addresses.
+* `GeographyServiceProvider` documents that the kernel loads config, migrations, translations, views, and routes by convention. It registers no extra bindings.
+
 <!-- releases -->
