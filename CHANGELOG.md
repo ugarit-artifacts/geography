@@ -123,4 +123,12 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 * When the district is set and the city is omitted, the capability writes the district's `city_id` onto the parcel before `save()`.
 * On update, an omitted city keeps the current city. Changing only the district to another city therefore fails until the matching city is sent.
 
+## [1.21.00] - 2026-10-19
+
+* feat(countries): add `CountryController` for capabilities and for the save feature, plus `CountryTranslationController`.
+* Add store, update, and destroy form requests. `code` is `required`, size 2, `[A-Za-z]{2}`, and unique among countries whose `deleted_at` is null. Update ignores the current country.
+* `UppercasesCountryCode` uppercases `code` in `prepareForValidation()` so the unique rule sees the stored form.
+* Add `CountryResource` and `CountryTranslationResource`.
+* Remove the 1.00.00 `CountryController`.
+
 <!-- releases -->
