@@ -205,4 +205,19 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 * Drop `minimum-stability`, `prefer-stable`, and the keyword list. Autoload the factories and seeders. The description lists districts and addresses.
 * `GeographyServiceProvider` documents that the kernel loads config, migrations, translations, views, and routes by convention. It registers no extra bindings.
 
+## [2.00.01] - 2026-10-19
+
+* feat(schema): add `2026_10_19_140000_refine_geography_constraints`.
+* Drops a plain unique index that still covers soft-deleted rows, then creates `Schema::partialUnique()` indexes:
+  * `countries (code)` where `deleted_at` is null. `code` is `varchar(2)`, ISO 3166-1 alpha-2.
+  * `governorates (country_id, slug)`
+  * `cities (governorate_id, slug)`
+  * `districts (city_id, slug)`
+  * `locations (district_id, slug)` when `district_id` is not null
+  * `locations (city_id, slug)` when `district_id` is null and `city_id` is not null
+  * `locations (slug)` when both parents are null
+* Changes `locations.latitude` and `longitude` from float to decimal when the live column is still float or double.
+* The migration is a no-op when the create migrations already built the partial indexes. PostgreSQL, SQLite, and SQL Server store the predicate. MySQL and MariaDB cannot.
+* `down()` does not restore a global unique index, because duplicate slugs across parents cannot be folded back into one.
+
 <!-- releases -->
