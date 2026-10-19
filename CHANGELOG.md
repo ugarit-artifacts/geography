@@ -226,4 +226,13 @@ All notable changes to `ugarit-artifacts/geography` are documented here. Version
 * docs(geography): rewrite `ARCHITECTURE.md`. Controllers build a parcel and return an outcome. A save feature calls save, then per-locale translation save or destroy, then show, inside one transaction.
 * The architecture page lists the directories for capabilities, features, parcels, outcomes, enums, repositories, policies, HTTP, models, migrations, routes, and language.
 
+## [2.00.03] - 2026-10-19
+
+* docs(geography): add `SCHEMA.md`.
+* The hierarchy diagram lists every column on `countries`, `governorates`, `cities`, `districts`, `locations`, and the five translation tables. `locales` is shown with `id` and `country_id` because the rest of that table belongs to i18n.
+* Tables document type, nullability, and constraints. `code` is `varchar(2)`. Coordinates are `decimal(10, 8)` and `decimal(11, 8)`.
+* Delete rules: restrict from country down to district, set null from city and district to location, cascade from a parent to its translation rows and from `locales` to translation rows.
+* Partial unique indexes are listed, including the three location predicates. The page states that MySQL and MariaDB have no partial indexes.
+* The page records what the schema does not store: capitals, currencies, dialing codes, flags, and boundary polygons. It also records that district/city agreement is enforced by `SaveLocationCapability`, not by a foreign key.
+
 <!-- releases -->
